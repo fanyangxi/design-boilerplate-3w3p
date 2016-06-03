@@ -1,0 +1,138 @@
+@import "compass/reset";
+@import "compass/css3";
+@mixin clearfix {
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+@mixin respond-to($media) {
+    @if $media==handhelds {
+        @media only screen and (max-width: $break-small) {
+            @content;
+        }
+    }
+    @else if $media==medium-screens {
+        @media only screen and (min-width: $break-small + 1) and (max-width: $break-large - 1) {
+            @content;
+        }
+    }
+    @else if $media==wide-screens {
+        @media only screen and (min-width: $break-large) {
+            @content;
+        }
+    }
+}
+
+$bg-color: #F2EEE8;
+$post-bg-color: #FFFBF5;
+$border-color: #91939e;
+$gray-text-color: #E0DBD1;
+$text-color: blue;
+$twitter-color: lightblue;
+$break-small: 620px;
+$break-large: 1024px;
+body {
+    font-family: 'Play', sans-serif;
+    background: $bg-color;
+}
+
+.avator {
+    float: left;
+    width: 3em;
+    height: 3em;
+    @include border-radius(100%);
+    position: absolute;
+    top: 2em;
+    left: 2em;
+}
+
+.main-content {
+    margin: 0 4em;
+}
+
+.info {
+    .numbers {
+        margin: 2em auto;
+        background: $post-bg-color;
+        li {
+            float: left;
+            width: 25%;
+            @include respond-to(medium-screens) {
+                width: 50%;
+            }
+            @include respond-to(handhelds) {
+                float: none;
+                width: 100%;
+            }
+            box-sizing: border-box;
+            padding: 1.5em 3em;
+            border-bottom: 3px solid transparent;
+            transition: all .3s ease-in;
+            h4 {
+                text-transform: uppercase;
+                color: $gray-text-color;
+            }
+            p {
+                margin-top: 1em;
+                font-weight: bold;
+            }
+            &:hover {
+                border-bottom: 3px solid $twitter-color;
+            }
+        }
+        @include clearfix;
+    }
+}
+
+.articles {
+    .post {
+        position: relative;
+        text-align: left;
+        padding: 2em;
+        background: $post-bg-color;
+        border-bottom: 1px solid $border-color;
+        .content {
+            margin-left: 4em;
+            span {
+                margin-right: 1em;
+                &.name {
+                    font-weight: bold;
+                }
+                &.account {
+                    font-weight: lighter;
+                    color: $gray-text-color;
+                }
+                &.time {
+                    color: $gray-text-color;
+                    float: right;
+                    margin-right: 0;
+                }
+            }
+            header {
+                margin-bottom: 1em;
+            }
+            p {
+                line-height: 1.4;
+                font-weight: normal;
+                margin-bottom: 1em;
+            }
+            footer {
+                a {
+                    text-decoration: none;
+                    color: $gray-text-color;
+                    margin-right: 1em;
+                    &:last-child {
+                        float: right;
+                        margin-right: 0;
+                    }
+                    &:hover {
+                        color: $text-color;
+                    }
+                }
+            }
+        }
+    }
+}
