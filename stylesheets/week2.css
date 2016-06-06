@@ -101,13 +101,13 @@ body {
   border-bottom: 3px solid transparent;
   transition: all .3s ease-in;
 }
-@media only screen and (min-width: 621px) and (max-width: 1023px) {
+@media only screen and (min-width: 421px) and (max-width: 1023px) {
   /* line 60, ../sass/week2.scss */
   .info .numbers li {
     width: 50%;
   }
 }
-@media only screen and (max-width: 620px) {
+@media only screen and (max-width: 420px) {
   /* line 60, ../sass/week2.scss */
   .info .numbers li {
     float: none;
